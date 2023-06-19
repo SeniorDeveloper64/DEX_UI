@@ -43,6 +43,24 @@ const Banner = (props) => {
                 65% target raised <span>1 ETH = $1000 = 3177.38 CIC</span>
               </h4>
             </div> */}
+
+            <div className="row justify-content-center">
+              <div className="col-xl-8">
+                <div className="section-title text-center mb-50">
+                  <h2 className="title" style={{color: 'rgb(39, 220, 139)'}}>
+                    Why choose HEXIDO
+                  </h2>
+                </div>
+                <p style={{color: 'rgb(255, 255, 255)'}}>
+                  HEXIDO plans to introduce a decentralized Know Your Customer (KYC) system, 
+                  where your identity verification is stored in a decentralized setting, 
+                  ensuring that your personal information remains confidential and undisclosed to any parties. 
+                  At any given time, you have the ability to restore your wallet and regain access to your assets
+                  by providing a valid proof of identity.
+              </p>
+              </div>
+            </div>
+
           </div>
         </div>
         <div className="row justify-content-center">

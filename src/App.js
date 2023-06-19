@@ -4,6 +4,7 @@ import { useEffect } from "react";
 import WOW from "wow.js";
 import HomeTwo from "./pages/Home/HomeTwo";
 import Blog from "./pages/Blog/Blog";
+import AboutUs from "./pages/AboutUs/AboutUs";
 import BlogDetailsPage from "./pages/BlogDetails/BlogDetailsPage";
 import { useLocation } from "react-router-dom";
 
@@ -28,6 +29,7 @@ function App() {
     <>
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="about-us" element={<AboutUs />} />
         <Route path="home-two" element={<HomeTwo />} />
         <Route path="blog" element={<Blog />} />
         <Route path="blog-details" element={<BlogDetailsPage />} />
