@@ -128,14 +128,14 @@ const HeaderOne = () => {
                         <Link to="/blog">Documents</Link>
                         <ul className={cn("sub-menu")}>
                           <li className={cn(pathname == "/blog" && "active")}>
-                            <Link to="/blog">Our Blog</Link>
+                            <Link to="/blog">Blog</Link>
                           </li>
                           <li
                             className={cn(
                               pathname == "/blog-details" && "active"
                             )}
                           >
-                            <Link to="/blog-details">Blog Details</Link>
+                            <Link to="/blog-details">Litepaper</Link>
                           </li>
                         </ul>
                       </li>
@@ -148,7 +148,6 @@ const HeaderOne = () => {
                           Contact us
                         </Link>
                       </li>
-                      
                     </ul>
                   </div>
                   <div className={cn("header-action", "d-none d-md-block")}>
