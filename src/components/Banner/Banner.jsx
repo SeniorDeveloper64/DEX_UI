@@ -21,13 +21,12 @@ const Banner = (props) => {
               <img src="" alt="" />
               <h2 className="title">
                 Hybrid Exchange and Launchpad<br></br>
-                <span>Power to the people with DeFi</span>
+                <span style={{ color: 'rgb(39, 220, 139)' }} >Power to the people with DeFi</span>
               </h2>
             </div>
-            <div className="banner-progress-wrap">
+            {/* <div className="banner-progress-wrap">
               <ul>
                 <li>Pre Sell</li>
-                {/* <li>Soft Cap</li> */}
                 <li>Bonus</li>
               </ul>
               <div className="progress">
@@ -43,7 +42,7 @@ const Banner = (props) => {
               <h4 className="title">
                 65% target raised <span>1 ETH = $1000 = 3177.38 CIC</span>
               </h4>
-            </div>
+            </div> */}
           </div>
         </div>
         <div className="row justify-content-center">

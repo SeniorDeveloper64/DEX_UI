@@ -8,7 +8,7 @@ const ContactOne = () => {
       icon: "fa-envelope",
       content: (
         <>
-          info@hexido.io <br />
+          kemalg@hexido.io  <br />
         </>
       ),
     },

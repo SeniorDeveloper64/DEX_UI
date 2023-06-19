@@ -17,14 +17,17 @@ const WhoWeAre = (props) => {
           <div className="col-lg-6">
             <div className="about-content wow fadeInRight" data-wow-delay=".2s">
               <div className="section-title mb-30">
-                <span className="sub-title">Who we are</span>
-                <h2 className="title">
+                <span className="sub-title">Never lose your digital assets!</span>
+                {/* <h2 className="title">
                   First DEX to offer profit sharing rewards
-                </h2>
+                </h2> */}
               </div>
               <p>
-                HEXIDO intends to allocate a substantial portion of its profit towards the pST 
-                holders, who possess a distinct NFT.
+              HEXIDO plans to introduce a decentralized Know Your Customer (KYC) system, 
+              where your identity verification is stored in a decentralized setting, 
+              ensuring that your personal information remains confidential and undisclosed to any parties. 
+              At any given time, you have the ability to restore your wallet and regain access to your assets
+              by providing a valid proof of identity.
               </p>
               <Link to="/" className="btn">
                 Get Whitelisted
