@@ -48,15 +48,14 @@ const Banner = (props) => {
               <div className="col-xl-8">
                 <div className="section-title text-center mb-50">
                   <h2 className="title" style={{color: 'rgb(39, 220, 139)'}}>
-                    Why choose HEXIDO
+                    What makes us HYBRID?
                   </h2>
                 </div>
                 <p style={{color: 'rgb(255, 255, 255)'}}>
-                  HEXIDO plans to introduce a decentralized Know Your Customer (KYC) system, 
-                  where your identity verification is stored in a decentralized setting, 
-                  ensuring that your personal information remains confidential and undisclosed to any parties. 
-                  At any given time, you have the ability to restore your wallet and regain access to your assets
-                  by providing a valid proof of identity.
+                HEXIDO is set to incorporate FIAT support, enabling users to directly purchase cryptocurrencies 
+                using traditional fiat currencies through their HEXIDO Wallet. 
+                This implementation will eliminate the necessity of relying on centralized exchanges for cryptocurrency purchases, 
+                granting users the ability to trade assets on a decentralized exchange.
               </p>
               </div>
             </div>

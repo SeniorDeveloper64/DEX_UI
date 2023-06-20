@@ -98,13 +98,19 @@ const WhyChooseUs = () => {
     <section className="choose-area pb-130">
       <div className="container">
         <div className="row justify-content-center">
-          <div className="col-xl-6">
+          <div className="col-xl-8">
             <div className="section-title text-center mb-50">
-              <span className="sub-title">why Choose us </span>
-              <h2 className="title">
-                Why choose HEXIDO
+              {/* <span className="sub-title">What makes us HYBRID </span> */}
+              <h2 className="title"  style={{color: 'rgb(39, 220, 139)'}}>
+              What makes us HYBRID 
               </h2>
             </div>
+            <p style={{color: 'rgb(255, 255, 255)'}}>
+                HEXIDO is set to incorporate FIAT support, enabling users to directly purchase cryptocurrencies 
+                using traditional fiat currencies through their HEXIDO Wallet. 
+                This implementation will eliminate the necessity of relying on centralized exchanges for cryptocurrency purchases, 
+                granting users the ability to trade assets on a decentralized exchange.
+            </p>
           </div>
         </div>
 

@@ -125,7 +125,7 @@ const FooterOne = () => {
                     <form action="#">
                       <input
                         type="email"
-                        placeholder="Info@gmail.com"
+                        placeholder="kemalg@hexido.io"
                         required
                       />
                       <button type="submit">
