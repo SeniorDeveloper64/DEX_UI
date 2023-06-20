@@ -131,11 +131,9 @@ const HeaderOne = () => {
                             <Link to="/blog">Blog</Link>
                           </li>
                           <li
-                            className={cn(
-                              pathname == "/blog-details" && "active"
-                            )}
+                            className={cn(pathname == "/litepaper" && "active")}
                           >
-                            <Link to="/blog-details">Litepaper</Link>
+                            <Link to="/litepaper">Litepaper</Link>
                           </li>
                         </ul>
                       </li>
