@@ -1,10 +1,12 @@
 import React from "react";
 import PageLoader from "../../components/PageLoader/PageLoader";
+import HeaderOne from "../../components/Header/HeaderOne";
 
 const AboutUs = () => {
   return (
     <div>
       <PageLoader />
+      <HeaderOne />
       <div className="container">
         <div><br /><br /></div>
         <div className="row justify-content-center">
