@@ -12,11 +12,11 @@ const AboutUs = () => {
         <div className="row justify-content-center">
           <div className="col-xl-8">
             <div className="section-title text-center mb-50">
-              <h2 className="title" style={{color: 'rgb(39, 220, 139)'}}>
+              <h2 className="title" /*style={{color: 'rgb(39, 220, 139)'}}*/>
                 About Us
               </h2>
             </div>
-            <p style={{color: 'rgb(255, 255, 255)'}}>
+            <p /*style={{color: 'rgb(255, 255, 255)'}}*/>
             HEXIDO is a decentralized exchange platform where the biggest focus is to build 
             mobile dedicated DEX trading, asset storing and managing applications. 
             Currently decentralized exchanges are not fully functional on mobile applications 
