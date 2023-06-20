@@ -102,7 +102,7 @@ const WhyChooseUs = () => {
             <div className="section-title text-center mb-50">
               {/* <span className="sub-title">What makes us HYBRID </span> */}
               <h2 className="title"  style={{color: 'rgb(39, 220, 139)'}}>
-              What makes us HYBRID 
+              What makes us HYBRID?
               </h2>
             </div>
             <p style={{color: 'rgb(255, 255, 255)'}}>
