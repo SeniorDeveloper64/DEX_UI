@@ -16,7 +16,7 @@ const AboutUs = () => {
                 About Us
               </h2>
             </div>
-            <p /*style={{color: 'rgb(255, 255, 255)'}}*/>
+            <p style={{color: 'rgb(255, 255, 255)'}}>
             HEXIDO is a decentralized exchange platform where the biggest focus is to build 
             mobile dedicated DEX trading, asset storing and managing applications. 
             Currently decentralized exchanges are not fully functional on mobile applications 
