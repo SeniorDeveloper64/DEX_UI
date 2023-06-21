@@ -63,8 +63,9 @@ const HeaderOne = () => {
 
   // active link switching
   const { hash, pathname } = useLocation();
+  console.log({pathname, hash})
   const isActiveLink = (id) => {
-    return id == hash ? "active" : "";
+    return id === hash ? 'active' : (id == pathname ? "active" : "");
   };
 
   return (
@@ -90,12 +91,12 @@ const HeaderOne = () => {
                     <ul className={"navigation"}>
                       <li
                         className={cn(
-                          hash == "" && "active",
+                          isActiveLink('#header'),
                           "menu-item-has-children"
                         )}
                       >
                         <Link
-                          to="#header"
+                          to="/#header"
                           className={"section-link"}
                           onClick={() => handleClickScroll("header")}
                         >
@@ -112,8 +113,13 @@ const HeaderOne = () => {
                           </li>
                         </ul> */}
                       </li>
-                      <li className={cn(hash == "#about" && "active")}>
-                        <Link to="/about-us">About us</Link>
+                      <li className={isActiveLink("/about-us")}>
+                        <Link 
+                          to="/about-us" 
+                          className={"section-link"}
+                        >
+                          About us
+                        </Link>
                       </li>
                       <li className={isActiveLink("#roadmap")}>
                         <Link
