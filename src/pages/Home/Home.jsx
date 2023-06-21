@@ -26,7 +26,7 @@ const Home = () => {
           <WhitePaper />
         </div>
 
-        <TeamOne />
+        {/* <TeamOne /> */}
         <ContactOne />
       </main>
     </LayoutOne>

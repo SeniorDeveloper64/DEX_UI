@@ -131,10 +131,10 @@ const HeaderOne = () => {
                         </Link>
                       </li>
                       <li className={"menu-item-has-children"}>
-                        <Link to="/blog">Documents</Link>
+                        <Link to="#">Documents</Link>
                         <ul className={cn("sub-menu")}>
                           <li className={cn(pathname == "/blog" && "active")}>
-                            <Link to="/blog">Blog</Link>
+                            <Link to="#">Blog</Link>
                           </li>
                           <li
                             className={cn(pathname == "/litepaper" && "active")}

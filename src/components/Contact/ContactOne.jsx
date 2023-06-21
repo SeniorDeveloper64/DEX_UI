@@ -4,14 +4,14 @@ import ContactOneInfoItem from "./ContactOneInfoItem";
 
 const ContactOne = () => {
   const info_items = [
-    {
-      icon: "fa-envelope",
-      content: (
-        <>
-          kemalg@hexido.io  <br />
-        </>
-      ),
-    },
+    // {
+    //   icon: "fa-envelope",
+    //   content: (
+    //     <>
+    //       kemalg@hexido.io  <br />
+    //     </>
+    //   ),
+    // },
     // {
     //   icon: "fa-phone",
     //   content: (
@@ -36,16 +36,16 @@ const ContactOne = () => {
     <section id="contact" className="contact-area pt-70 pb-110">
       <div className="container">
         {/* section title */}
-        <div className="row justify-content-center">
+        {/* <div className="row justify-content-center">
           <div className="col-lg-8">
             <div className="section-title text-center mb-70">
               <span className="sub-title">Contact</span>
               <h2 className="title">
-                {/* <span>Contact</span> ICO Crypto */}
+                <span>Contact</span> ICO Crypto
               </h2>
             </div>
           </div>
-        </div>
+        </div> */}
 
         {/* secction info */}
         <div className="contact-info-wrap">

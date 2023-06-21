@@ -97,10 +97,10 @@ const WhyChooseUs = () => {
   return (
     <section className="choose-area pb-130">
       <div className="container">
-        <div className="row justify-content-center">
+        {/* <div className="row justify-content-center">
           <div className="col-xl-8">
             <div className="section-title text-center mb-50">
-              {/* <span className="sub-title">What makes us HYBRID </span> */}
+              <span className="sub-title">What makes us HYBRID </span>
               <h2 className="title"  style={{color: 'rgb(39, 220, 139)'}}>
               What makes us HYBRID?
               </h2>
@@ -112,7 +112,7 @@ const WhyChooseUs = () => {
                 granting users the ability to trade assets on a decentralized exchange.
             </p>
           </div>
-        </div>
+        </div> */}
 
         <div className="row choose-active">
           <SlickSlider settings={slickSettings}>
