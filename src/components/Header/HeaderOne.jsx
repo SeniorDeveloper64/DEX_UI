@@ -133,9 +133,9 @@ const HeaderOne = () => {
                       <li className={"menu-item-has-children"}>
                         <Link to="#">Documents</Link>
                         <ul className={cn("sub-menu")}>
-                          <li className={cn(pathname == "/blog" && "active")}>
+                          {/* <li className={cn(pathname == "/blog" && "active")}>
                             <Link to="#">Blog</Link>
-                          </li>
+                          </li> */}
                           <li
                             className={cn(pathname == "/litepaper" && "active")}
                           >
