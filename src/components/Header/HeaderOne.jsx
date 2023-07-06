@@ -174,7 +174,7 @@ const HeaderOne = () => {
                         </ul>
                       </li> */}
                       <li className={"header-btn"}>
-                        <Link to="#" className="btn">
+                        <Link to="/launch-app" className="btn">
                           Launch App
                         </Link>
                       </li>
