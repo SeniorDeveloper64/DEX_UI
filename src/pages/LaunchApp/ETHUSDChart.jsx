@@ -9,7 +9,7 @@ const ETHUSDChart = () => {
       {
         label: 'ETH/USD Price',
         data: [],
-        borderColor: 'rgb(255, 99, 132)',
+        borderColor: 'rgb(39, 220, 139)',
         fill: false,
       },
     ],

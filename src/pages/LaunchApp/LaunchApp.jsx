@@ -2,6 +2,7 @@ import React from 'react';
 import PageLoader from "../../components/PageLoader/PageLoader";
 import HeaderOne from "../../components/Header/HeaderOne";
 import ETHUSDChart from './ETHUSDChart';
+import ETHUSDSwapWidget from './ETHUSDSwap';
 
 
 const LaunchApp = () => {
@@ -9,7 +10,14 @@ const LaunchApp = () => {
     <div>
       <PageLoader />
       {/* <HeaderOne /> */}
-      <ETHUSDChart />
+      <div class="row align-items-center">
+        <div class="col-lg-4">
+          {/* <ETHUSDSwapWidget /> */}
+        </div>
+        <div class="col-lg-8">
+          <ETHUSDChart />
+        </div>
+      </div>
     </div>
   );
 };
