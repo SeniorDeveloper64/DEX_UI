@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@uniswap/sdk": "^3.0.3",
     "axios": "^1.4.0",
     "bootstrap": "^5.2.3",
     "chart.js": "^4.3.0",
@@ -18,6 +19,7 @@
     "react-slick": "^0.29.0",
     "slick-carousel": "^1.8.1",
     "web-vitals": "^2.1.4",
+    "web3": "^4.0.2",
     "wow.js": "^1.2.2"
   },
   "scripts": {

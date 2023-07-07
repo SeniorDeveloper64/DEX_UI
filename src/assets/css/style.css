@@ -2974,6 +2974,40 @@ label {
   background: #0b1d33;
   border-color: #00c4f4;
 }
+.contact-form-wrap-launch {
+  background-position: center;
+  background-size: cover;
+}
+.contact-form-wrap-launch .form-grp {
+  margin-bottom: 30px;
+}
+.contact-form-wrap-launch .form-grp textarea,
+.contact-form-wrap-launch .form-grp input {
+  width: 100%;
+  background: #0b1d33;
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 5px;
+  font-size: 16px;
+  color: #fff;
+  font-weight: 400;
+  padding: 18px 20px;
+  height: 65px;
+}
+.contact-form-wrap-launch .form-grp textarea::placeholder,
+.contact-form-wrap-launch .form-grp input::placeholder {
+  font-size: 16px;
+  color: #fff;
+  font-weight: 400;
+  opacity: 0.7;
+}
+.contact-form-wrap-launch .form-grp textarea {
+  min-height: 184px;
+  max-height: 184px;
+}
+.contact-form-wrap-launch .submit-btn .btn {
+  background: #0b1d33;
+  border-color: #00c4f4;
+}
 
 /* contact-two */
 .contact-bg {
