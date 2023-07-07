@@ -4,6 +4,7 @@ import cn from "classnames";
 import logoImage from "../../../src/assets/img/logo/logo.png";
 import $ from "jquery";
 import { handleClickScroll } from "../../lib/helpers";
+import ConnectWalletButton from "../../pages/LaunchApp/ConnectWalletButton";
 
 const HeaderLaunchPage = () => {
   // sticky nav bar
@@ -157,9 +158,7 @@ const HeaderLaunchPage = () => {
                   <div className={cn("header-action", "d-none d-md-block")}>
                     <ul>
                       <li className={"header-btn"}>
-                        <button className="btn">
-                          Connect
-                        </button>
+                        <ConnectWalletButton />
                       </li>
                     </ul>
                   </div>
