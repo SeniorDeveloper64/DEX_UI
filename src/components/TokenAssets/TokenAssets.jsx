@@ -7,10 +7,12 @@ const TokenAssets = () => {
   const { wallet } = useContext(StatusContext);
   const [ethBalance, setEthBalance] = useState(0);
   const [usdtBalance, setUSDTBalance] = useState(0);
+  const [ethPrice, setEthPrice] = useState(null);
 
   useEffect(() => {
     if (wallet != "") {
       getBalance();
+      fetchEthPrice();
     }
   }, [wallet]);
 
@@ -49,6 +51,18 @@ const TokenAssets = () => {
     } catch (error) {}
   };
 
+  const fetchEthPrice = async () => {
+    try {
+      const response = await fetch(
+        "https://api.coingecko.com/api/v3/simple/price?ids=ethereum&vs_currencies=usd"
+      );
+      const data = await response.json();
+      setEthPrice(data.ethereum.usd);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   return (
     <div className="row justify-content-center">
       {wallet === "" ? (
@@ -77,7 +91,7 @@ const TokenAssets = () => {
               <span>{ethBalance}</span>
             </div>
             <div class="col-4">
-              <span>$12132</span>
+              <span>${ethPrice * ethBalance}</span>
             </div>
             <div class="col-4">
               <span>USDT</span>
@@ -86,7 +100,7 @@ const TokenAssets = () => {
               <span>{usdtBalance}</span>
             </div>
             <div class="col-4">
-              <span>$123123</span>
+              <span>${usdtBalance}</span>
             </div>
           </div>
         </div>
