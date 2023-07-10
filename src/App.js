@@ -9,6 +9,7 @@ import LaunchApp from "./pages/LaunchApp/LaunchApp";
 //import BlogDetailsPage from "./pages/BlogDetails/BlogDetailsPage";
 import LitePaperPage from "./pages/LitePaper/LitePaperPage";
 import { useLocation } from "react-router-dom";
+import { StatusProvider } from "./contexts/Status.context";
 
 function App() {
   useEffect(() => {
@@ -29,14 +30,16 @@ function App() {
 
   return (
     <>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="about-us" element={<AboutUs />} />
-        <Route path="launch-app" element={<LaunchApp />} />
-        <Route path="home-two" element={<HomeTwo />} />
-        <Route path="blog" element={<Blog />} />
-        <Route path="litepaper" element={<LitePaperPage />} />
-      </Routes>
+      <StatusProvider>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="about-us" element={<AboutUs />} />
+          <Route path="launch-app" element={<LaunchApp />} />
+          <Route path="home-two" element={<HomeTwo />} />
+          <Route path="blog" element={<Blog />} />
+          <Route path="litepaper" element={<LitePaperPage />} />
+        </Routes>
+      </StatusProvider>
     </>
   );
 }
