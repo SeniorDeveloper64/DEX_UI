@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useContext } from "react";
 import { StatusContext } from "../../contexts/Status.context";
-import Web3, { eth } from "web3";
+import Web3 from "web3";
 import bigInt from "big-integer";
 
 const TokenAssets = () => {
@@ -10,7 +10,7 @@ const TokenAssets = () => {
   const [ethPrice, setEthPrice] = useState(null);
 
   useEffect(() => {
-    if (wallet != "") {
+    if (wallet !== "") {
       getBalance();
       fetchEthPrice();
     }
@@ -66,13 +66,15 @@ const TokenAssets = () => {
   return (
     <div className="row justify-content-center">
       {wallet === "" ? (
-        <span>Connect your wallet</span>
+        <div className="text-center">
+          <span style={{ color: "rgb(39, 220, 139)" }}>
+            Connect your wallet
+          </span>
+        </div>
       ) : (
         <div className="col-xl-8">
           <div className="section-title text-center mb-50">
-            <h2 className="title" style={{ color: "rgb(255, 255, 255)" }}>
-              My Assets
-            </h2>
+            <h2 className="title">My Assets</h2>
           </div>
           <div className="row justify-content-center">
             <div class="col-4">
