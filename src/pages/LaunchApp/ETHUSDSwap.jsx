@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Web3 from "web3";
 import UniswapV2Router02ABI from "../../constants/abi/UniswapRouter.json";
 import OutputTokenABI from "../../constants/abi/IERC20ABI.json";
@@ -6,11 +6,60 @@ import WETHABI from "../../constants/abi/WethABI.json";
 import bigInt from "big-integer";
 
 const ETHUSDSwapSection = () => {
+  const web3 = new Web3(window.ethereum);
+
   const [selectedInput, setSelectedInput] = useState("eth");
   const [selectedOutput, setSelectedOutput] = useState("usdt");
   const [outputToken, setOutputToken] = useState("");
   const [ethAmount, setEthAmount] = useState("");
   const [outputAmount, setOutputAmount] = useState("");
+
+  console.log(outputAmount);
+
+  const [account, setAccount] = useState("");
+
+  useEffect(() => {
+    getAccount();
+  }, []);
+
+  useEffect(() => {
+    handleOutputAmount(ethAmount);
+  }, [ethAmount]);
+
+  const getAccount = async () => {
+    try {
+      const accounts = await web3.eth.getAccounts();
+      const account = accounts[0];
+      setAccount(account);
+    } catch (error) {}
+  };
+
+  const handleOutputAmount = async (ethAmount) => {
+    if (ethAmount == 0) {
+      setOutputAmount(0);
+    } else {
+      const uniswapRouterAddress = "0x7a250d5630B4cF539739dF2C5dAcb4c659F2488D";
+      const uniswapRouterABI = UniswapV2Router02ABI;
+
+      const uniswapRouterContract = new web3.eth.Contract(
+        uniswapRouterABI,
+        uniswapRouterAddress
+      );
+      const wethAddress = "0xB4FBF271143F4FBf7B91A5ded31805e42b2208d6";
+      const outputTokenAddress = "0xC2C527C0CACF457746Bd31B2a698Fe89de2b6d49"; // TODO: Replace with output token address
+
+      const amounts = await uniswapRouterContract.methods
+        .getAmountsOut(web3.utils.toWei(ethAmount, "ether"), [
+          wethAddress,
+          outputTokenAddress,
+        ])
+        .call();
+
+      const outputAmount = amounts[1];
+      console.log({ outputAmount });
+      setOutputAmount(Number(outputAmount).toString());
+    }
+  };
 
   const handleInputChange = (e) => {
     setSelectedInput(e.target.value);
@@ -24,11 +73,6 @@ const ETHUSDSwapSection = () => {
 
   const handleSwap = async () => {
     try {
-      const web3 = new Web3(window.ethereum);
-
-      const accounts = await web3.eth.getAccounts();
-      const account = accounts[0];
-
       const uniswapRouterAddress = "0x7a250d5630B4cF539739dF2C5dAcb4c659F2488D";
       const uniswapRouterABI = UniswapV2Router02ABI;
 
@@ -45,7 +89,6 @@ const ETHUSDSwapSection = () => {
         .deposit()
         .send({ from: account, value: web3.utils.toWei(ethAmount, "ether") });
 
-      // const inputTokenAddress = "0xB4FBF271143F4FBf7B91A5ded31805e42b2208d6"; // TODO: Replace with input token address
       const outputTokenAddress = "0xC2C527C0CACF457746Bd31B2a698Fe89de2b6d49"; // TODO: Replace with output token address
       const outputTokenABI = OutputTokenABI;
       const outputTokenContract = new web3.eth.Contract(
@@ -70,7 +113,6 @@ const ETHUSDSwapSection = () => {
         .approve(uniswapRouterAddress, outputAmountWei)
         .send({ from: account });
 
-      // const ethAmountWei = web3.utils.toWei(ethAmount, "ether");
       await uniswapRouterContract.methods
         .swapExactTokensForTokens(
           ethAmountWei,
