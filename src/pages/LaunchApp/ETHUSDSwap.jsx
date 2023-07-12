@@ -169,11 +169,12 @@ const ETHUSDSwapSection = () => {
         await uniswapRouterContract.methods
           .swapExactTokensForETH(
             inputAmountWei,
+            outputAmountWei,
             [tokenAddress, wethAddress],
             account,
             Date.now() + 1000 * 60 * 3
           )
-          .send({ from: account, value: outputAmountWei });
+          .send({ from: account });
 
         await wethContract.methods
           .withdraw(web3.utils.toWei(outputAmount, "ether"))
