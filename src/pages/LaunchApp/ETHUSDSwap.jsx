@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import Web3 from "web3";
+import Web3, { eth } from "web3";
 import UniswapV2Router02ABI from "../../constants/abi/UniswapRouter.json";
 import OutputTokenABI from "../../constants/abi/IERC20ABI.json";
 import WETHABI from "../../constants/abi/WethABI.json";
@@ -13,6 +13,7 @@ const ETHUSDSwapSection = () => {
   const [outputToken, setOutputToken] = useState("");
   const [ethAmount, setEthAmount] = useState("");
   const [outputAmount, setOutputAmount] = useState("");
+  const [gasFee, setGasFee] = useState("");
 
   console.log(outputAmount);
 
@@ -37,6 +38,7 @@ const ETHUSDSwapSection = () => {
   const handleOutputAmount = async (ethAmount) => {
     if (ethAmount == 0) {
       setOutputAmount(0);
+      setGasFee(0);
     } else {
       const uniswapRouterAddress = "0x7a250d5630B4cF539739dF2C5dAcb4c659F2488D";
       const uniswapRouterABI = UniswapV2Router02ABI;
@@ -56,8 +58,11 @@ const ETHUSDSwapSection = () => {
         .call();
 
       const outputAmount = amounts[1];
-      console.log({ outputAmount });
       setOutputAmount(Number(outputAmount).toString());
+
+      const gasPrice = await web3.eth.getGasPrice();
+      const gasFee = (bigInt(gasPrice) * bigInt(10000000)) / bigInt(1e18);
+      setGasFee(gasFee);
     }
   };
 
@@ -85,10 +90,6 @@ const ETHUSDSwapSection = () => {
       const wethABI = WETHABI;
       const wethContract = new web3.eth.Contract(wethABI, wethAddress);
 
-      await wethContract.methods
-        .deposit()
-        .send({ from: account, value: web3.utils.toWei(ethAmount, "ether") });
-
       const outputTokenAddress = "0xC2C527C0CACF457746Bd31B2a698Fe89de2b6d49"; // TODO: Replace with output token address
       const outputTokenABI = OutputTokenABI;
       const outputTokenContract = new web3.eth.Contract(
@@ -103,25 +104,30 @@ const ETHUSDSwapSection = () => {
         ])
         .call();
 
+      await wethContract.methods
+        .deposit()
+        .send({ from: account, value: amounts[0] });
+
       const ethAmountWei = amounts[0];
 
       console.log(amounts);
       const outputAmountWei = amounts[1];
       console.log(outputAmountWei);
+      console.log("account");
+      console.log(account);
 
       await outputTokenContract.methods
         .approve(uniswapRouterAddress, outputAmountWei)
         .send({ from: account });
 
       await uniswapRouterContract.methods
-        .swapExactTokensForTokens(
-          ethAmountWei,
+        .swapExactETHForTokens(
           outputAmountWei,
           [wethAddress, outputTokenAddress],
           account,
-          Date.now() + 1000 * 60 * 10
+          Date.now() + 1000 * 60 * 3
         )
-        .send({ from: account });
+        .send({ from: account, value: ethAmountWei });
 
       // Unwrap WETH into ETH
       await wethContract.methods
@@ -181,7 +187,7 @@ const ETHUSDSwapSection = () => {
           </div>
           <div className="col-md-10">
             <div className="form-grp">
-              <input type="number" id="netFee" readOnly />
+              <input type="number" id="gasFee" value={gasFee} readOnly />
             </div>
           </div>
         </div>
