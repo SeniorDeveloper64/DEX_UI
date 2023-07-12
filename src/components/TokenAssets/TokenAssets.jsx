@@ -2,17 +2,20 @@ import React, { useEffect, useState, useContext } from "react";
 import { StatusContext } from "../../contexts/Status.context";
 import Web3 from "web3";
 import bigInt from "big-integer";
+import UniswapV2Router02ABI from "../../constants/abi/UniswapRouter.json";
 
 const TokenAssets = () => {
   const { wallet } = useContext(StatusContext);
   const [ethBalance, setEthBalance] = useState(0);
   const [usdtBalance, setUSDTBalance] = useState(0);
   const [ethPrice, setEthPrice] = useState(null);
+  const [AllPrice, setAllPrice] = useState(null);
 
   useEffect(() => {
     if (wallet !== "") {
       getBalance();
-      fetchEthPrice();
+      // fetchEthPrice();
+      getEthPrice();
     }
   }, [wallet]);
 
@@ -63,6 +66,30 @@ const TokenAssets = () => {
     }
   };
 
+  const getEthPrice = async () => {
+    const web3 = new Web3(window.ethereum);
+
+    const wethAddress = "0xB4FBF271143F4FBf7B91A5ded31805e42b2208d6";
+    const tokenAddress = "0xC2C527C0CACF457746Bd31B2a698Fe89de2b6d49";
+
+    const uniswapRouterAddress = "0x7a250d5630B4cF539739dF2C5dAcb4c659F2488D";
+    const uniswapRouterABI = UniswapV2Router02ABI;
+    const uniswapRouterContract = new web3.eth.Contract(
+      uniswapRouterABI,
+      uniswapRouterAddress
+    );
+
+    const amounts = await uniswapRouterContract.methods
+      .getAmountsOut(web3.utils.toWei(ethBalance, "ether"), [
+        wethAddress,
+        tokenAddress,
+      ])
+      .call();
+
+    const price = bigInt(amounts[1]) / 1e6;
+    setAllPrice(price);
+  };
+
   return (
     <div className="row justify-content-center">
       {wallet === "" ? (
@@ -93,7 +120,7 @@ const TokenAssets = () => {
               <span>{ethBalance}</span>
             </div>
             <div class="col-4">
-              <span>${ethPrice * ethBalance}</span>
+              <span>${AllPrice}</span>
             </div>
             <div class="col-4">
               <span>USDT</span>
