@@ -130,9 +130,9 @@ const ETHUSDSwapSection = () => {
           .deposit()
           .send({ from: account, value: amounts[0] });
 
-        await TokenContract.methods
-          .approve(uniswapRouterAddress, outputAmountWei)
-          .send({ from: account });
+        // await TokenContract.methods
+        //   .approve(uniswapRouterAddress, outputAmountWei)
+        //   .send({ from: account });
 
         await uniswapRouterContract.methods
           .swapExactETHForTokens(
