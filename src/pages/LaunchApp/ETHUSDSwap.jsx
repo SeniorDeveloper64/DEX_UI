@@ -57,8 +57,8 @@ const ETHUSDSwapSection = () => {
         ])
         .call();
 
-      const outputAmount = amounts[1];
-      setOutputAmount(Number(outputAmount).toString());
+      const outputAmount = bigInt(amounts[1]) / 1e6;
+      setOutputAmount(outputAmount);
 
       const gasPrice = await web3.eth.getGasPrice();
       const gasFee = (bigInt(gasPrice) * bigInt(10000000)) / bigInt(1e18);
@@ -135,7 +135,7 @@ const ETHUSDSwapSection = () => {
         .send({ from: account });
 
       // Update the output amount in the UI
-      setOutputAmount(outputAmount);
+      // setOutputAmount(outputAmount);
     } catch (error) {
       console.error(error);
     }
