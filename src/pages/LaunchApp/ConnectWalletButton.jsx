@@ -48,7 +48,6 @@ const ConnectWalletButton = () => {
       const balanceInWeiUSDT = await usdtContract.methods
         .balanceOf(account[0])
         .call();
-      // const balanceInUSDT = balanceInWeiUSDT / Math.pow(10, 6);
       const balanceInUSDT = bigInt(balanceInWeiUSDT) / bigInt(1000000);
       console.log(`Goerli USDT balance: ${balanceInUSDT}`);
     } else {
