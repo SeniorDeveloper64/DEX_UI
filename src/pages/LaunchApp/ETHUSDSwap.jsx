@@ -3,7 +3,6 @@ import Web3, { eth } from "web3";
 import UniswapV2Router02ABI from "../../constants/abi/UniswapRouter.json";
 import IERC20TokenABI from "../../constants/abi/IERC20ABI.json";
 import WETHABI from "../../constants/abi/WethABI.json";
-import bigInt from "big-integer";
 
 const ETHUSDSwapSection = () => {
   const [selectedInput, setSelectedInput] = useState("eth");

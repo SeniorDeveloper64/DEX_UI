@@ -1,7 +1,6 @@
 import React, { useEffect, useState, useContext } from "react";
 import { StatusContext } from "../../contexts/Status.context";
 import Web3 from "web3";
-import bigInt from "big-integer";
 import UniswapV2Router02ABI from "../../constants/abi/UniswapRouter.json";
 
 const TokenAssets = () => {

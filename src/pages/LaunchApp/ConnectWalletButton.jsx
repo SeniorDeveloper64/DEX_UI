@@ -1,6 +1,5 @@
 import React, { useContext, useState } from "react";
 import Web3 from "web3";
-import bigInt from "big-integer";
 import { StatusContext } from "../../contexts/Status.context";
 
 const ConnectWalletButton = () => {
