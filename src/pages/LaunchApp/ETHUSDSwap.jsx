@@ -68,7 +68,7 @@ const ETHUSDSwapSection = () => {
       } else {
         const amounts = await uniswapRouterContract.methods
           .getAmountsOut(
-            bigInt(bigInt(Math.floor(inputAmount)) * 1e6).toString(),
+            bigInt(bigInt(Math.floor(inputAmount)) * bigInt(1e6)).toString(),
             [tokenAddress, wethAddress]
           )
           .call();
