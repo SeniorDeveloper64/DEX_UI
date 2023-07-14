@@ -48,7 +48,7 @@ const ConnectWalletButton = () => {
       const balanceInWeiUSDT = await usdtContract.methods
         .balanceOf(account[0])
         .call();
-      const balanceInUSDT = bigInt(balanceInWeiUSDT) / bigInt(1000000);
+      const balanceInUSDT = Number(balanceInWeiUSDT) / Number(1000000);
       console.log(`Goerli USDT balance: ${balanceInUSDT}`);
     } else {
       // Web3 is not available, so you cannot get the balance
