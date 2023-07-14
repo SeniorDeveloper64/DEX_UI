@@ -2,7 +2,6 @@ import React, { useEffect, useState, useContext } from "react";
 import { StatusContext } from "../../contexts/Status.context";
 import Web3 from "web3";
 import UniswapV2Router02ABI from "../../constants/abi/UniswapRouter.json";
-import bigInt from "big-integer";
 
 const TokenAssets = () => {
   const { wallet } = useContext(StatusContext);
@@ -46,7 +45,7 @@ const TokenAssets = () => {
       const balanceInWeiUSDT = await usdtContract.methods
         .balanceOf(wallet)
         .call();
-      const balanceInUSDT = bigInt(balanceInWeiUSDT) / bigInt(1000000);
+      const balanceInUSDT = Number(balanceInWeiUSDT) / Number(1000000);
       console.log(`Goerli USDT balance: ${balanceInUSDT}`);
       setEthBalance(balanceInEth);
       setUSDTBalance(balanceInUSDT);
@@ -85,7 +84,7 @@ const TokenAssets = () => {
       ])
       .call();
 
-    const price = bigInt(amounts[1]) / 1e6;
+    const price = Number(amounts[1]) / Number(1e6);
     setAllPrice(price);
   };
 

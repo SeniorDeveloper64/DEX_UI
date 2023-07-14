@@ -3,7 +3,6 @@ import Web3, { eth } from "web3";
 import UniswapV2Router02ABI from "../../constants/abi/UniswapRouter.json";
 import IERC20TokenABI from "../../constants/abi/IERC20ABI.json";
 import WETHABI from "../../constants/abi/WethABI.json";
-import bigInt from "big-integer";
 
 const ETHUSDSwapSection = () => {
   const [selectedInput, setSelectedInput] = useState("eth");
@@ -63,26 +62,24 @@ const ETHUSDSwapSection = () => {
           .call();
 
         console.log(amounts);
-        const outputAmount = bigInt(amounts[1]) / 1e6;
+        const outputAmount = Number(amounts[1]) / Number(1e6);
         setOutputAmount(outputAmount);
-        // console.log(Date.now() + 1000 * 60 * 3);
       } else {
         const amounts = await uniswapRouterContract.methods
           .getAmountsOut(
-            bigInt(bigInt(Math.floor(inputAmount)) * 1e6).toString(),
+            Number(Number(Math.floor(inputAmount)) * 1e6).toString(),
             [tokenAddress, wethAddress]
           )
           .call();
 
         console.log(amounts);
-        const outputAmount = bigInt(amounts[1]) / 1e18;
+        const outputAmount = Number(amounts[1]) / Number(1e18);
         setOutputAmount(outputAmount);
       }
 
       const gasPrice = await web3.eth.getGasPrice();
-      const gasFee = (bigInt(gasPrice) * bigInt(1000000)) / bigInt(1e18);
+      const gasFee = (Number(gasPrice) * Number(1000000)) / Number(1e18);
       setGasFee(gasFee);
-      // console.log(Date.now() + 1000 * 60 * 3);
     }
   };
 
@@ -149,7 +146,7 @@ const ETHUSDSwapSection = () => {
       } else {
         const amounts = await uniswapRouterContract.methods
           .getAmountsOut(
-            bigInt(bigInt(Math.floor(inputAmount)) * 1e6).toString(),
+            Number(Number(Math.floor(inputAmount)) * 1e6).toString(),
             [tokenAddress, wethAddress]
           )
           .call();
