@@ -1,6 +1,7 @@
 import React, { useContext, useState } from "react";
 import Web3 from "web3";
 import { StatusContext } from "../../contexts/Status.context";
+import bigInt from "big-integer";
 
 const ConnectWalletButton = () => {
   const { wallet, setWallet } = useContext(StatusContext);
@@ -47,7 +48,7 @@ const ConnectWalletButton = () => {
       const balanceInWeiUSDT = await usdtContract.methods
         .balanceOf(account[0])
         .call();
-      const balanceInUSDT = Number(balanceInWeiUSDT) / Number(1000000);
+      const balanceInUSDT = bigInt(balanceInWeiUSDT) / bigInt(1000000);
       console.log(`Goerli USDT balance: ${balanceInUSDT}`);
     } else {
       // Web3 is not available, so you cannot get the balance
