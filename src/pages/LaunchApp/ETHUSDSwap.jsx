@@ -136,7 +136,7 @@ const ETHUSDSwapSection = () => {
             outputAmountWei,
             [wethAddress, tokenAddress],
             account,
-            Date.now() + 1000 * 60 * 3
+            Number(Date.now() + 1000 * 60 * 3)
           )
           .send({ from: account, value: inputAmountWei });
 
@@ -146,7 +146,7 @@ const ETHUSDSwapSection = () => {
       } else {
         const amounts = await uniswapRouterContract.methods
           .getAmountsOut(
-            Number(Number(Math.floor(inputAmount)) * 1e6).toString(),
+            Number(Number(Math.floor(inputAmount)) * Number(1e6)).toString(),
             [tokenAddress, wethAddress]
           )
           .call();
@@ -169,7 +169,7 @@ const ETHUSDSwapSection = () => {
             outputAmountWei,
             [tokenAddress, wethAddress],
             account,
-            Date.now() + 1000 * 60 * 3
+            Number(Date.now() + 1000 * 60 * 3)
           )
           .send({ from: account });
 
