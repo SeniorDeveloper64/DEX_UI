@@ -116,19 +116,19 @@ const TokenAssets = () => {
               <span>ETH</span>
             </div>
             <div class="col-4">
-              <span>{ethBalance}</span>
+              <span>{ethBalance.toLocaleString()}</span>
             </div>
             <div class="col-4">
-              <span>${AllPrice}</span>
+              <span>${AllPrice.toLocaleString()}</span>
             </div>
             <div class="col-4">
               <span>USDT</span>
             </div>
             <div class="col-4">
-              <span>{usdtBalance}</span>
+              <span>{usdtBalance.toLocaleString()}</span>
             </div>
             <div class="col-4">
-              <span>${usdtBalance}</span>
+              <span>${usdtBalance.toLocaleString()}</span>
             </div>
           </div>
         </div>
