@@ -51,8 +51,10 @@ const ETHUSDSwapSection = () => {
         uniswapRouterAddress
       );
 
-      const wethAddress = "0xB4FBF271143F4FBf7B91A5ded31805e42b2208d6";
-      const tokenAddress = "0xC2C527C0CACF457746Bd31B2a698Fe89de2b6d49";
+      // const wethAddress = "0xB4FBF271143F4FBf7B91A5ded31805e42b2208d6"; // Goerli
+      // const tokenAddress = "0xC2C527C0CACF457746Bd31B2a698Fe89de2b6d49";  // Goerli usdt
+      const wethAddress = "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2"; // ETH
+      const tokenAddress = "0xdAC17F958D2ee523a2206206994597C13D831ec7"; // ETH USDT
 
       if (selectedInput == "eth") {
         const amounts = await uniswapRouterContract.methods
@@ -79,7 +81,7 @@ const ETHUSDSwapSection = () => {
       }
 
       const gasPrice = await web3.eth.getGasPrice();
-      const gasFee = (bigInt(gasPrice) * bigInt(1000000)) / bigInt(1e18);
+      const gasFee = bigInt(gasPrice) / bigInt(1e18);
       setGasFee(gasFee);
     }
   };
@@ -104,11 +106,11 @@ const ETHUSDSwapSection = () => {
         uniswapRouterAddress
       );
 
-      const wethAddress = "0xB4FBF271143F4FBf7B91A5ded31805e42b2208d6";
+      const wethAddress = "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2";
       const wethABI = WETHABI;
       const wethContract = new web3.eth.Contract(wethABI, wethAddress);
 
-      const tokenAddress = "0xC2C527C0CACF457746Bd31B2a698Fe89de2b6d49"; // TODO: Replace with output token address
+      const tokenAddress = "0xdAC17F958D2ee523a2206206994597C13D831ec7"; // TODO: Replace with output token address
       const TokenABI = IERC20TokenABI;
       const TokenContract = new web3.eth.Contract(TokenABI, tokenAddress);
 

@@ -27,7 +27,8 @@ const TokenAssets = () => {
       const balanceInEth = web3.utils.fromWei(balanceInWei, "ether");
       console.log(`Goerli ETH balance: ${balanceInEth}`);
 
-      const usdtContractAddr = "0xC2C527C0CACF457746Bd31B2a698Fe89de2b6d49"; // Goerli USDT contract address
+      // const usdtContractAddr = "0xC2C527C0CACF457746Bd31B2a698Fe89de2b6d49"; // Goerli USDT contract address
+      const usdtContractAddr = "0xdAC17F958D2ee523a2206206994597C13D831ec7"; // ERC USDT contract address
       const usdtContractAbi = [
         {
           constant: true,
@@ -47,7 +48,7 @@ const TokenAssets = () => {
         .balanceOf(wallet)
         .call();
       const balanceInUSDT = bigInt(balanceInWeiUSDT) / bigInt(1000000);
-      console.log(`Goerli USDT balance: ${balanceInUSDT}`);
+      console.log(`USDT balance: ${balanceInUSDT}`);
       setEthBalance(balanceInEth);
       setUSDTBalance(balanceInUSDT);
     } catch (error) {}
@@ -68,24 +69,28 @@ const TokenAssets = () => {
   const getEthPrice = async () => {
     const web3 = new Web3(window.ethereum);
 
-    const wethAddress = "0xB4FBF271143F4FBf7B91A5ded31805e42b2208d6";
-    const tokenAddress = "0xC2C527C0CACF457746Bd31B2a698Fe89de2b6d49";
+    // const wethAddress = "0xB4FBF271143F4FBf7B91A5ded31805e42b2208d6"; // Goerli
+    // const wethAddress = "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2"; // ETH
+    // const tokenAddress = "0xC2C527C0CACF457746Bd31B2a698Fe89de2b6d49"; // Goerli usdt
 
-    const uniswapRouterAddress = "0x7a250d5630B4cF539739dF2C5dAcb4c659F2488D";
-    const uniswapRouterABI = UniswapV2Router02ABI;
-    const uniswapRouterContract = new web3.eth.Contract(
-      uniswapRouterABI,
-      uniswapRouterAddress
-    );
+    // const uniswapRouterAddress = "0x7a250d5630B4cF539739dF2C5dAcb4c659F2488D";
+    // const uniswapRouterABI = UniswapV2Router02ABI;
+    // const uniswapRouterContract = new web3.eth.Contract(
+    //   uniswapRouterABI,
+    //   uniswapRouterAddress
+    // );
 
-    const amounts = await uniswapRouterContract.methods
-      .getAmountsOut(web3.utils.toWei(ethBalance, "ether"), [
-        wethAddress,
-        tokenAddress,
-      ])
-      .call();
+    // const amounts = await uniswapRouterContract.methods
+    //   .getAmountsOut(web3.utils.toWei(ethBalance, "ether"), [
+    //     wethAddress,
+    //     tokenAddress,
+    //   ])
+    //   .call();
 
-    const price = bigInt(amounts[1]) / bigInt(1e6);
+    // const price = bigInt(amounts[1]) / bigInt(1e6);
+
+    await fetchEthPrice();
+    const price = ethBalance * ethPrice;
     setAllPrice(price);
   };
 

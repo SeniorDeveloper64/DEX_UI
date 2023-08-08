@@ -27,9 +27,10 @@ const ConnectWalletButton = () => {
       setWallet(account[0]);
       const balanceInWei = await web3.eth.getBalance(account[0]);
       const balanceInEth = web3.utils.fromWei(balanceInWei, "ether");
-      console.log(`Goerli ETH balance: ${balanceInEth}`);
+      console.log(`ETH balance: ${balanceInEth}`);
 
-      const usdtContractAddr = "0xC2C527C0CACF457746Bd31B2a698Fe89de2b6d49"; // Goerli USDT contract address
+      // const usdtContractAddr = "0xC2C527C0CACF457746Bd31B2a698Fe89de2b6d49"; // Goerli USDT contract address
+      const usdtContractAddr = "0xdAC17F958D2ee523a2206206994597C13D831ec7"; // ETH USDT contract address
       const usdtContractAbi = [
         {
           constant: true,
@@ -49,7 +50,7 @@ const ConnectWalletButton = () => {
         .balanceOf(account[0])
         .call();
       const balanceInUSDT = bigInt(balanceInWeiUSDT) / bigInt(1000000);
-      console.log(`Goerli USDT balance: ${balanceInUSDT}`);
+      console.log(`USDT balance: ${balanceInUSDT}`);
     } else {
       // Web3 is not available, so you cannot get the balance
       console.log("Web3 is not available");
