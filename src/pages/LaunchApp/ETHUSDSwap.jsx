@@ -67,6 +67,18 @@ const ETHUSDSwapSection = () => {
         console.log(amounts);
         const outputAmount = bigInt(amounts[1]) / bigInt(1e6);
         setOutputAmount(outputAmount);
+
+        const gas = await uniswapRouterContract.methods
+          .swapExactETHForTokens(
+            amounts[1],
+            [wethAddress, tokenAddress],
+            account,
+            Date.now() + 1000 * 60 * 3
+          )
+          .estimateGas({ from: account, value: amounts[0] });
+        const gasPrice = await web3.eth.getGasPrice();
+        const gasFee = web3.utils.fromWei((gas * gasPrice).toString(), "ether");
+        setGasFee(gasFee);
       } else {
         const amounts = await uniswapRouterContract.methods
           .getAmountsOut(
@@ -78,11 +90,21 @@ const ETHUSDSwapSection = () => {
         console.log(amounts);
         const outputAmount = bigInt(amounts[1]) / bigInt(1e18);
         setOutputAmount(outputAmount);
+
+        const TokenABI = IERC20TokenABI;
+        const TokenContract = new web3.eth.Contract(TokenABI, tokenAddress);
+        const gas = await TokenContract.methods
+          .approve(uniswapRouterAddress, amounts[0])
+          .estimateGas({ from: account });
+
+        const gasPrice = await web3.eth.getGasPrice();
+        const gasFee = web3.utils.fromWei((gas * gasPrice).toString(), "ether");
+        setGasFee(gasFee);
       }
 
-      const gasPrice = await web3.eth.getGasPrice();
-      const gasFee = bigInt(gasPrice) / bigInt(1e18);
-      setGasFee(gasFee);
+      // const gasPrice = await web3.eth.getGasPrice();
+      // const gasFee = bigInt(gasPrice) / bigInt(1e18);
+      // setGasFee(gasFee);
     }
   };
 
@@ -150,7 +172,7 @@ const ETHUSDSwapSection = () => {
         const amounts = await uniswapRouterContract.methods
           .getAmountsOut(
             bigInt(bigInt(Math.floor(inputAmount)) * bigInt(1e6)).toString(),
-            [tokenAddress, wethAddress]
+            -[tokenAddress, wethAddress]
           )
           .call();
 
