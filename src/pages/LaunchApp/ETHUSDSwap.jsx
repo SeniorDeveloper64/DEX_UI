@@ -75,7 +75,7 @@ const ETHUSDSwapSection = () => {
             account,
             Date.now() + 1000 * 60 * 3
           )
-          .estimateGas({ from: account, value: amounts[0] });
+          .estimateGas({ value: amounts[0] });
         const gasPrice = await web3.eth.getGasPrice();
         const gasFee = web3.utils.fromWei((gas * gasPrice).toString(), "ether");
         setGasFee(gasFee);
@@ -95,7 +95,7 @@ const ETHUSDSwapSection = () => {
         const TokenContract = new web3.eth.Contract(TokenABI, tokenAddress);
         const gas = await TokenContract.methods
           .approve(uniswapRouterAddress, amounts[0])
-          .estimateGas({ from: account });
+          .estimateGas();
 
         const gasPrice = await web3.eth.getGasPrice();
         const gasFee = web3.utils.fromWei((gas * gasPrice).toString(), "ether");
